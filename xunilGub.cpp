@@ -2,7 +2,7 @@
 //
 
 #include "./pch.h"
-
+#include "./antiVM/generic.h"
 
 int main(void)
 {
@@ -58,9 +58,10 @@ int main(void)
 	// }
 
 	// /* Generic sandbox detection */
-	// if (ENABLE_GEN_SANDBOX_CHECKS) {
-		
-	// }
+	if (ENABLE_GEN_SANDBOX_CHECKS) {
+		std::cout << "Sandbox Detection" << std::endl;
+		std::cout << mouse_movement() << std::endl;
+	}
 
 	// /* VirtualBox Detection */
 	// if (ENABLE_VBOX_CHECKS) {
