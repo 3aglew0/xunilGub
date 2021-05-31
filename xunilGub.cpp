@@ -60,8 +60,7 @@ int main(void)
 	if (ENABLE_GEN_SANDBOX_CHECKS) {
 		std::string res;
 		std::cout << "Sandbox Detection" << std::endl;
-		res =((mouse_movement() == 0) ? "PASS" : "FAIL");
-		std::cout << " Mouse movement " <<  res << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL
+		std::cout << " Mouse movement " <<  std::flush << ((mouse_movement() == 0) ? "PASS" : "FAIL") << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL
 		std::cout << " Checking Number of processors in machine " << number_of_processors() << std::endl;
 		std::cout << " Checking Interupt Descriptor Table location " << idt_trick() << std::endl;
 		std::cout << " Checking Local Descriptor Table location " << ldt_trick() << std::endl;
