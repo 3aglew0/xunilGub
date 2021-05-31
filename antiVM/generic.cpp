@@ -1,4 +1,5 @@
 #include "generic.h"
+#include "pch.h"
 
 std::string execCommand(const std::string cmd, int& out_exitStatus)
 {
@@ -60,6 +61,44 @@ bool number_of_processors() {
     printf("Proc Count:%d\n", procCount);
     if (procCount < 2)
 		return true;
+	else
+		return false;
+}
+
+bool idt_trick()
+{
+	uint idt_base = get_idt_base();
+	if ((idt_base >> 24) == 0xff)
+		return true;
+
+	else
+		return false;
+}
+
+/*
+Same for Local Descriptor Table (LDT)
+*/
+bool ldt_trick()
+{
+	uint ldt_base = get_ldt_base();
+
+	if (ldt_base == 0xdead0000)
+		return false;
+	else
+		return true; // VMWare detected	
+}
+
+
+/*
+Same for Global Descriptor Table (GDT)
+*/
+bool gdt_trick()
+{
+	uint gdt_base = get_gdt_base();
+
+	if ((gdt_base >> 24) == 0xff)
+		return true; // VMWare detected	
+
 	else
 		return false;
 }

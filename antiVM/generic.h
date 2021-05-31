@@ -7,3 +7,6 @@
 std::string execCommand(const std::string, int&); 
 bool mouse_movement();
 bool number_of_processors();
+bool idt_trick();
+bool ldt_trick();
+bool gdt_trick();

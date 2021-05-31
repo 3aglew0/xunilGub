@@ -1,8 +1,7 @@
 // xunilGub.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include "./pch.h"
-#include "./antiVM/generic.h"
+#include "pch.h"
 
 int main(void)
 {
@@ -60,8 +59,11 @@ int main(void)
 	// /* Generic sandbox detection */
 	if (ENABLE_GEN_SANDBOX_CHECKS) {
 		std::cout << "Sandbox Detection" << std::endl;
-		std::cout << mouse_movement() << std::endl;
-		std::cout << number_of_processors() << std::endl;
+		std::cout << " Mouse movement " << mouse_movement() << std::endl;
+		std::cout << " Checking Number of processors in machine " << number_of_processors() << std::endl;
+		std::cout << " Checking Interupt Descriptor Table location " << idt_trick() << std::endl;
+		std::cout << " Checking Local Descriptor Table location " << ldt_trick() << std::endl;
+		std::cout << " Checking Global Descriptor Table location " << gdt_trick() << std::endl;
 	}
 
 	// /* VirtualBox Detection */
