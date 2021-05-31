@@ -30,8 +30,9 @@ std::string execCommand(const std::string cmd, int& out_exitStatus)
     return result;
 }
 
-bool mouse_movement(){
+bool mouse_movement_tool(){
     /*
+    * to use this function must have installed xdotool (sdo apt install xdotool)
     * this function return true if mouse is moved inside a time window of 5 second, false is same position is detected
     * use case: a sandbox or an emulator should be able to emulate the movement of the mouse, a malicious program could disable its malicious functionalities
     * if no mouse movements are detected
@@ -42,7 +43,7 @@ bool mouse_movement(){
 	return result != execCommand("xdotool getmouselocation", exitStatus) ?  true :  false;
 }
 
-bool mouse_movement_notool(){
+bool mouse_movement(){
     // detect mouse movement, no extra tool required (xdot tool)
     // may require root permission to read from /dev/input/mice
     int p = fork();
@@ -62,7 +63,7 @@ bool mouse_movement_notool(){
         if(fd == -1)
         {
             printf("ERROR Opening %s\n", pDevice);
-            return -1;
+            exit(-1);
         }
         
         
@@ -72,7 +73,7 @@ bool mouse_movement_notool(){
             if(read(fd, data, sizeof(data)) > 0)
             {
                 // mouse movement detect - we are not in emulator
-                return 0;
+                exit(0);
             }
         }
     }
@@ -88,6 +89,7 @@ bool mouse_movement_notool(){
         else if(result == 0){
             // child still alive - no mouse detection -> emulator
             // Mouse not moved, probably we are in VM, return TRUE
+            kill(p, SIGKILL);
             return true;
         }
         else{

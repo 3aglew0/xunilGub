@@ -7,7 +7,7 @@
 #include "string.h"
 
 std::string execCommand(const std::string, int&); 
-bool mouse_movement_notool();
+bool mouse_movement_tool();
 bool mouse_movement();
 bool number_of_processors();
 bool idt_trick();
