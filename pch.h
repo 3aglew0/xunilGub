@@ -17,6 +17,7 @@
 #include <assert.h>
 #include <stdarg.h>
 #include <time.h>
+#include<unistd.h>
 #include <algorithm>
 #include <cctype>
 

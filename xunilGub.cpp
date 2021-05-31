@@ -61,6 +61,7 @@ int main(void)
 	if (ENABLE_GEN_SANDBOX_CHECKS) {
 		std::cout << "Sandbox Detection" << std::endl;
 		std::cout << mouse_movement() << std::endl;
+		std::cout << number_of_processors() << std::endl;
 	}
 
 	// /* VirtualBox Detection */
