@@ -131,7 +131,7 @@ bool idt_trick()
 {
 	uint idt_base = get_idt_base();
 	if ((idt_base >> 24) == 0xff)
-		return true;
+		return true; // VMvare detected
 
 	else
 		return false;
