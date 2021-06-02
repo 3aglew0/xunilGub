@@ -172,7 +172,7 @@ one reason if because several VMs are running on the same servers so they can ru
 more tasks at the same time.
 heuristically we say that VM has 2GB
 */
-bool memory_space()
+bool disk_space()
 {
     boost::filesystem::space_info si = boost::filesystem::space(".");
     float gb = si.capacity / (1000*1000*1000);

@@ -14,5 +14,5 @@ bool number_of_processors();
 bool idt_trick();
 bool ldt_trick();
 bool gdt_trick();
-bool memory_space();
+bool disk_space();
 bool accelerated_sleep();
