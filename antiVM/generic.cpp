@@ -81,7 +81,7 @@ bool mouse_movement(){
     }
     else{
         //parent
-        sleep(3);
+        sleep(1);
         int status;
         pid_t result = waitpid(p, &status, WNOHANG);
         if ( result == -1 ) {
@@ -174,10 +174,11 @@ heuristically we say that VM has 2GB
 */
 bool disk_space()
 {
+    int minHardDiskSize_gb = 80;
     boost::filesystem::space_info si = boost::filesystem::space(".");
     float gb = si.capacity / (1000*1000*1000);
     // std::cout << "Your system has GB " << gb << std::endl;
-    return (gb <= 2); // return TRUE if space is that one of VM --> VM Detected
+    return (gb <= 80); // return TRUE if space is that one of VM --> VM Detected
 
 }
 
@@ -187,7 +188,7 @@ Sleep and check if time have been accelerated
 bool accelerated_sleep()
 {
 	time_t dwStart = 0, dwEnd = 0, dwDiff = 0;
-	int second_to_sleep = 10;
+	int second_to_sleep =2;
     
     struct timespec ts;
     if(clock_gettime(CLOCK_MONOTONIC,&ts) != 0)
