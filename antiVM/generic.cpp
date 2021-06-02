@@ -180,3 +180,33 @@ bool memory_space()
     return (gb <= 2); // return TRUE if space is that one of VM --> VM Detected
 
 }
+
+/*
+Sleep and check if time have been accelerated
+*/
+bool accelerated_sleep()
+{
+	time_t dwStart = 0, dwEnd = 0, dwDiff = 0;
+	int second_to_sleep = 10;
+    
+    struct timespec ts;
+    if(clock_gettime(CLOCK_MONOTONIC,&ts) != 0)
+        // errror
+        return false;
+
+    dwStart = ts.tv_sec;
+    sleep(second_to_sleep);
+    if(clock_gettime(CLOCK_MONOTONIC,&ts) != 0)
+        // error
+        return false; 
+    dwEnd = ts.tv_sec;
+    dwDiff = dwEnd - dwStart;
+    // /* If the Sleep function was patched*/
+	dwDiff = dwEnd - dwStart;
+
+	if (dwDiff >= second_to_sleep - 2) // substracted 2s just to be sure
+		return false; // pass --> probably I am in normal system, no accelleration mecanishm  
+	else
+		return true; // bad --> probably I am not in normal system because accelleration mecanishm detected (sleep function has been accellerated)
+
+}

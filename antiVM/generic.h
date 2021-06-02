@@ -15,3 +15,4 @@ bool idt_trick();
 bool ldt_trick();
 bool gdt_trick();
 bool memory_space();
+bool accelerated_sleep();
