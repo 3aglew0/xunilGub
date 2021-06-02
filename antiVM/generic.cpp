@@ -210,3 +210,13 @@ bool accelerated_sleep()
 		return true; // bad --> probably I am not in normal system because accelleration mecanishm detected (sleep function has been accellerated)
 
 }
+
+bool memory_space() {
+    unsigned long mem_total = 0;
+    
+    mem_total = get_mem_total() ;
+    float mem = mem_total / ((1024) * (1024));
+    //std::cout << mem << std::endl;
+
+    return (mem <= 2);
+}
