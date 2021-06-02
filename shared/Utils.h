@@ -3,6 +3,7 @@
 ulong get_idt_base();
 ulong get_ldt_base();
 ulong get_gdt_base();
+unsigned long get_mem_total();
 
 // Check GCC
 #if __GNUC__

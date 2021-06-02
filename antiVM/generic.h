@@ -16,3 +16,4 @@ bool ldt_trick();
 bool gdt_trick();
 bool disk_space();
 bool accelerated_sleep();
+bool memory_space();

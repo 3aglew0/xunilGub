@@ -65,9 +65,9 @@ int main(void)
 		std::cout << " Checking Interupt Descriptor Table location " << ((idt_trick()== 0) ? "PASS" : "FAIL") << std::endl;
 		std::cout << " Checking Local Descriptor Table location " << ((ldt_trick()== 0) ? "PASS" : "FAIL") << std::endl;
 		std::cout << " Checking Global Descriptor Table location " << ((gdt_trick()== 0) ? "PASS" : "FAIL") << std::endl;
-		std::cout << " Checking memory space using std::filesystem::space_info " << ((disk_space() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Checking disk space using std::filesystem::space_info " << ((disk_space() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 		std::cout << " Check if time has been accelerated " << ((accelerated_sleep() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
-	
+		std::cout << " Checking memory ram space " << ((memory_space() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
 	/* VirtualBox Detection */
