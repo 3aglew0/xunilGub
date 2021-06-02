@@ -23,21 +23,15 @@ ulong get_idt_base()
 {
 	// Get the base of Interupt Descriptor Table (IDT)
 
-	//unsigned char idtr[6];
 	unsigned long idtr;
-	ulong idt_ = 0;
     dt idt = {0, 0};
 
 	// sidt instruction stores the contents of the IDT Register
 	// (the IDTR which points to the IDT) in a processor register.
 
-#if defined (ENV32BIT)
-	_asm sidt idtr
-#endif
     asm volatile( "sidt %0" : "=m"(idt) );
     idtr = idt.base;
-	//idt_ = *((unsigned long *)&idtr[2]);
-	printf("IDT base: 0x%x\n", idtr);
+	//printf("IDT base: 0x%x\n", idtr);
 
 	return idtr;
 }
@@ -54,7 +48,7 @@ ulong get_ldt_base()
 	// (the LDTR which points to the LDT) in a processor register.
     asm volatile( "sldt %0" : "=m"(ldtr) );
 	ldt = *((unsigned long *)&ldtr[0]);
-	printf("LDT base: 0x%x\n", ldt);
+	//printf("LDT base: 0x%x\n", ldt);
 
 	return ldt;
 }
@@ -64,22 +58,12 @@ ulong get_gdt_base()
 {
 	// Get the base of Global Descriptor Table (GDT)
 
-	// u_char gdtr[6];
-	// ulong gdt = 0;
-
 	// sgdt instruction stores the contents of the GDT Register
 	// (the GDTR which points to the GDT) in a processor register.
-#if defined (ENV32BIT)
-	_asm sgdt gdtr
-#endif
-	// asm volatile( "sgdt %0" : "=m"(gdtr) );
-	// gdt = *((unsigned long *)&gdtr[2]);
-	//  printf("GDT base: 0x%x\n", gdt);
 
 	dt gdt = {0, 0};
 	asm volatile( "sgdt %0" : "=m"(gdt) );
-	printf( "GDT: limit=%04d, base=%016lx\n", gdt.limit, gdt.base );
+	//printf( "GDT: limit=%04d, base=%016lx\n", gdt.limit, gdt.base );
 
-	//return gdt;
 	return gdt.base;
 }

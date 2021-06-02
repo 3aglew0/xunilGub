@@ -61,10 +61,10 @@ int main(void)
 		std::string res;
 		std::cout << "Sandbox Detection" << std::endl;
 		std::cout << " Mouse movement " <<  std::flush << ((mouse_movement() == 0) ? "PASS" : "FAIL") << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL
-		std::cout << " Checking Number of processors in machine " << number_of_processors() << std::endl;
-		std::cout << " Checking Interupt Descriptor Table location " << idt_trick() << std::endl;
-		std::cout << " Checking Local Descriptor Table location " << ldt_trick() << std::endl;
-		std::cout << " Checking Global Descriptor Table location " << gdt_trick() << std::endl;
+		std::cout << " Checking Number of processors in machine " << ((number_of_processors()== 0) ? "PASS" : "FAIL") << std::endl;
+		std::cout << " Checking Interupt Descriptor Table location " << ((idt_trick()== 0) ? "PASS" : "FAIL") << std::endl;
+		std::cout << " Checking Local Descriptor Table location " << ((ldt_trick()== 0) ? "PASS" : "FAIL") << std::endl;
+		std::cout << " Checking Global Descriptor Table location " << ((gdt_trick()== 0) ? "PASS" : "FAIL") << std::endl;
 		std::cout << " Checking memory space using std::filesystem::space_info " << ((memory_space() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
