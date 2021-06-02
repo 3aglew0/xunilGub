@@ -7,10 +7,10 @@ int main(void)
 {
 	/* enable functions */
 	// bool	ENABLE_TLS_CHECKS = true;
-	bool	ENABLE_DEBUG_CHECKS = true;
+	bool ENABLE_DEBUG_CHECKS = true;
 	// bool	ENABLE_INJECTION_CHECKS = true;
-	bool	ENABLE_GEN_SANDBOX_CHECKS = true;
-	// bool	ENABLE_VBOX_CHECKS = true;
+	bool ENABLE_GEN_SANDBOX_CHECKS = true;
+	bool ENABLE_VBOX_CHECKS = true;
 	// bool	ENABLE_VMWARE_CHECKS = true;
 	// bool	ENABLE_VPC_CHECKS = true;
 	// bool	ENABLE_QEMU_CHECKS = true;
@@ -65,12 +65,13 @@ int main(void)
 		std::cout << " Checking Interupt Descriptor Table location " << idt_trick() << std::endl;
 		std::cout << " Checking Local Descriptor Table location " << ldt_trick() << std::endl;
 		std::cout << " Checking Global Descriptor Table location " << gdt_trick() << std::endl;
+		std::cout << " Checking memory space using std::filesystem::space_info " << ((memory_space() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
-	// /* VirtualBox Detection */
-	// if (ENABLE_VBOX_CHECKS) {
-	
-	// }
+	/* VirtualBox Detection */
+	if (ENABLE_VBOX_CHECKS) {
+		
+	}
 
 	// /* VMWare Detection */
 	// if (ENABLE_VMWARE_CHECKS) {

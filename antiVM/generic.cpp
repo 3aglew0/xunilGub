@@ -43,9 +43,11 @@ bool mouse_movement_tool(){
 	return result != execCommand("xdotool getmouselocation", exitStatus) ?  true :  false;
 }
 
+// detect mouse movement, no extra tool required (xdot tool)
+// may require root permission to read from /dev/input/mice
+// if no mouse movement detected in 5 seconds means no user interaction, probably 
+// we are in sandbox -> return TRUE, 
 bool mouse_movement(){
-    // detect mouse movement, no extra tool required (xdot tool)
-    // may require root permission to read from /dev/input/mice
     int p = fork();
     if(p < 0){
         // error
@@ -161,4 +163,20 @@ bool gdt_trick()
 
 	else
 		return false;
+}
+
+
+/*
+Check if the machine have enough memory space, usually VM get a small ammount,
+one reason if because several VMs are running on the same servers so they can run
+more tasks at the same time.
+heuristically we say that VM has 2GB
+*/
+bool memory_space()
+{
+    boost::filesystem::space_info si = boost::filesystem::space(".");
+    float gb = si.capacity / (1000*1000*1000);
+    // std::cout << "Your system has GB " << gb << std::endl;
+    return (gb <= 2); // return TRUE if space is that one of VM --> VM Detected
+
 }

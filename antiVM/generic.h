@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <sys/wait.h>
+#include <boost/filesystem.hpp>
 #include "string.h"
 
 std::string execCommand(const std::string, int&); 
@@ -13,3 +14,4 @@ bool number_of_processors();
 bool idt_trick();
 bool ldt_trick();
 bool gdt_trick();
+bool memory_space();
