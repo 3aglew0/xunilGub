@@ -104,6 +104,10 @@ bool mouse_movement(){
 
     }
 }
+
+/*
+/ Count number of processors and check if less then 2
+*/
 bool number_of_processors() {
     char str[256];
     int procCount = 0;
@@ -212,6 +216,9 @@ bool accelerated_sleep()
 
 }
 
+/*
+/  Check if RAM is less then 2 GB
+*/
 bool memory_space() {
     unsigned long mem_total = 0;
     
@@ -221,3 +228,27 @@ bool memory_space() {
 
     return (mem <= 2);
 }
+
+/*
+/  Check if sys_vendor contains keywords of VMs
+*/
+bool model_computer_system(){
+    char str[256];
+    FILE *fp;
+
+    std::vector<std::string> VM_names;
+    VM_names.push_back("VirtualBox");
+    VM_names.push_back("HVM domU");
+    VM_names.push_back("VMWare");
+
+    if( (fp = fopen("/sys/devices/virtual/dmi/id/sys_vendor", "r")) ) {
+        fgets(str, sizeof(str), fp);
+        for (std::string el : VM_names){
+            if (std::string(str).find(el) != std::string::npos){
+                return true;
+            }
+        }
+        return false;
+    }
+    return false;
+}   

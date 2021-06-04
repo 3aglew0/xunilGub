@@ -18,3 +18,4 @@ bool gdt_trick();
 bool disk_space();
 bool accelerated_sleep();
 bool memory_space();
+bool model_computer_system();
