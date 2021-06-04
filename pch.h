@@ -23,6 +23,7 @@
 #include "shared/Utils.h"
 
 #include "antiVM/generic.h"
+#include "antiVM/VirtualBox.h"
 #include "TimingAttacks/timing.h"
 #include "AntiDisassm/AntiDisassm.h"
 

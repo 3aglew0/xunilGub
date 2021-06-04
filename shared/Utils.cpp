@@ -1,5 +1,8 @@
 #include "pch.h"
 #include "Utils.h"
+#include <iostream>
+#include <experimental/filesystem>
+
 typedef struct
 {
 	// Lots of *really bad* examples on the web where they use char[2]
@@ -84,4 +87,28 @@ unsigned long get_mem_total() {
         file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     return 0; // nothing found
+}
+
+bool check_mac_addr(char *szMac){
+	FILE *fp, *fp2;
+	char str[256], mac[8], path2[256];
+
+	//std::experimental::filesystem::path path= "/sys/class/net/";
+
+	std::string path = "/sys/class/net/";
+    for (const auto & entry : std::experimental::filesystem::directory_iterator(path)){
+		//std::cout << entry.path() << std::endl;
+		std::string path_to_mac = entry.path() ;
+		path_to_mac += std::string("/address");
+		//std::cout << path_to_mac << std::endl;
+		if( (fp = fopen(path_to_mac.c_str(), "r")) ) {
+			fgets(str, sizeof(str), fp);
+			//std::cout << "mac " << str << std::endl;
+			if (strncmp(str, szMac, 3) == 0){
+				return true;
+			}
+        }
+    }
+
+	return false;
 }
