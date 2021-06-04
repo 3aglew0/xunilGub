@@ -1,5 +1,6 @@
 #include "generic.h"
 #include "pch.h"
+#include <cpuid.h>
 
 std::string execCommand(const std::string cmd, int& out_exitStatus)
 {
@@ -220,3 +221,40 @@ bool memory_space() {
 
     return (mem <= 2);
 }
+
+bool model_computer_system(){
+    struct CPUVendorID {
+        unsigned int ebx;
+        unsigned int edx;
+        unsigned int ecx;
+
+        std::string toString() const {
+            return std::string(reinterpret_cast<const char *>(this), 12);
+        }
+    };
+
+    unsigned int level = 0;
+    unsigned int eax = 0;
+    unsigned int ebx;
+    unsigned int ecx;
+    unsigned int edx;
+
+    __get_cpuid(level, &eax, &ebx, &ecx, &edx);
+
+    CPUVendorID vendorID { .ebx = ebx, .edx = edx, .ecx = ecx };
+
+    std::map<std::string, std::string> VM_names;
+    VM_names["Virtual Box"] = "VirtualBox";
+    VM_names["Hardware Virtual Machine"] = "HVM domU";
+    VM_names["VM Ware"] = "VMWare";
+
+    std::string vendorIDString = vendorID.toString();
+
+    //auto it = VM_names.find(vendorIDString);
+    //std::string vendorName = (it == vendorIdToName.end()) ? "Unknown" : it->second;
+
+    std::cout << "Max instruction ID: " << eax << std::endl;
+    std::cout << "Vendor ID: " << vendorIDString << std::endl;
+    //std::cout << "Vendor name: " << vendorName << std::endl;
+    return true;
+}   
