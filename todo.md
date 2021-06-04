@@ -6,6 +6,9 @@
 3. implement `accelerated_sleep` [**DONE**]
 4. implement `time in for loop`
 
+04/06/2021
+1. 
+
 
 # TODO AT THE END
 1. accellerated time: from 2s to 60s
