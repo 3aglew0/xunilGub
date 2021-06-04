@@ -21,7 +21,7 @@ int main(void)
 	bool ENABLE_TIMING_ATTACKS = true;
 	// bool	ENABLE_DUMPING_CHECK = true;
 	// bool	ENABLE_ANALYSIS_TOOLS_CHECK = true;
-	// bool	ENABLE_ANTI_DISASSM_CHECKS = true;
+	bool ENABLE_ANTI_DISASSM_CHECKS = true;
 	
 
 
@@ -74,7 +74,16 @@ int main(void)
 
 	/* VirtualBox Detection */
 	if (ENABLE_VBOX_CHECKS) {
-		
+		std::cout<< "Begin AntiDisassmConstantCondition"<<std::endl;
+		AntiDisassmConstantCondition();
+		std::cout<< "Begin AntiDisassmAsmJmpSameTarget"<<std::endl;
+		AntiDisassmAsmJmpSameTarget();
+		std::cout<< "Begin AntiDisassmImpossibleDiasassm"<<std::endl;
+		AntiDisassmImpossibleDiasassm();
+		std::cout<< "Begin AntiDisassmFunctionPointer"<<std::endl;
+		AntiDisassmFunctionPointer();
+		std::cout<< "Begin AntiDisassmReturnPointerAbuse"<<std::endl;
+		AntiDisassmReturnPointerAbuse();
 	}
 
 	// /* VMWare Detection */
@@ -117,9 +126,11 @@ int main(void)
 	// if (ENABLE_ANALYSIS_TOOLS_CHECK) {
 	// }
 
-	// /* Anti disassembler tricks */
-	// if (ENABLE_ANTI_DISASSM_CHECKS) {
-	// }
+	/* Anti disassembler tricks */
+	if (ENABLE_ANTI_DISASSM_CHECKS) {
+	
+		
+	}
 
 	// /* Anti Dumping */
 	// if (ENABLE_DUMPING_CHECK) {

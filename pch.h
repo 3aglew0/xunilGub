@@ -24,5 +24,6 @@
 
 #include "antiVM/generic.h"
 #include "TimingAttacks/timing.h"
+#include "AntiDisassm/AntiDisassm.h"
 
 #endif //PCH_H

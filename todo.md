@@ -11,6 +11,7 @@
     * for loop [**DONE**]
     * ping with timer [**DONE**]
 3. antidisassm
+    * put asm code inline (check with peda)
 
 
 # TODO AT THE END
