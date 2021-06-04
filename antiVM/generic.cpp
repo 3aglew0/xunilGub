@@ -1,6 +1,5 @@
 #include "generic.h"
 #include "pch.h"
-#include <cpuid.h>
 
 std::string execCommand(const std::string cmd, int& out_exitStatus)
 {
@@ -105,6 +104,10 @@ bool mouse_movement(){
 
     }
 }
+
+/*
+/ Count number of processors and check if less then 2
+*/
 bool number_of_processors() {
     char str[256];
     int procCount = 0;
@@ -213,6 +216,9 @@ bool accelerated_sleep()
 
 }
 
+/*
+/  Check if RAM is less then 2 GB
+*/
 bool memory_space() {
     unsigned long mem_total = 0;
     
@@ -223,39 +229,26 @@ bool memory_space() {
     return (mem <= 2);
 }
 
+/*
+/  Check if sys_vendor contains keywords of VMs
+*/
 bool model_computer_system(){
-    struct CPUVendorID {
-        unsigned int ebx;
-        unsigned int edx;
-        unsigned int ecx;
+    char str[256];
+    FILE *fp;
 
-        std::string toString() const {
-            return std::string(reinterpret_cast<const char *>(this), 12);
+    std::vector<std::string> VM_names;
+    VM_names.push_back("VirtualBox");
+    VM_names.push_back("HVM domU");
+    VM_names.push_back("VMWare");
+
+    if( (fp = fopen("/sys/devices/virtual/dmi/id/sys_vendor", "r")) ) {
+        fgets(str, sizeof(str), fp);
+        for (std::string el : VM_names){
+            if (std::string(str).find(el) != std::string::npos){
+                return true;
+            }
         }
-    };
-
-    unsigned int level = 0;
-    unsigned int eax = 0;
-    unsigned int ebx;
-    unsigned int ecx;
-    unsigned int edx;
-
-    __get_cpuid(level, &eax, &ebx, &ecx, &edx);
-
-    CPUVendorID vendorID { .ebx = ebx, .edx = edx, .ecx = ecx };
-
-    std::map<std::string, std::string> VM_names;
-    VM_names["Virtual Box"] = "VirtualBox";
-    VM_names["Hardware Virtual Machine"] = "HVM domU";
-    VM_names["VM Ware"] = "VMWare";
-
-    std::string vendorIDString = vendorID.toString();
-
-    //auto it = VM_names.find(vendorIDString);
-    //std::string vendorName = (it == vendorIdToName.end()) ? "Unknown" : it->second;
-
-    std::cout << "Max instruction ID: " << eax << std::endl;
-    std::cout << "Vendor ID: " << vendorIDString << std::endl;
-    //std::cout << "Vendor name: " << vendorName << std::endl;
-    return true;
+        return false;
+    }
+    return false;
 }   
