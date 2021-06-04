@@ -18,7 +18,7 @@ int main(void)
 	// bool	ENABLE_WINE_CHECKS = true;
 	// bool	ENABLE_PARALLELS_CHECKS = true;
 	// bool	ENABLE_CODE_INJECTIONS = false;
-	// bool	ENABLE_TIMING_ATTACKS = true;
+	bool ENABLE_TIMING_ATTACKS = true;
 	// bool	ENABLE_DUMPING_CHECK = true;
 	// bool	ENABLE_ANALYSIS_TOOLS_CHECK = true;
 	// bool	ENABLE_ANTI_DISASSM_CHECKS = true;
@@ -104,9 +104,13 @@ int main(void)
 	// if (ENABLE_CODE_INJECTIONS) {
 	// }
 
-	// /* Timing Attacks */
-	// if (ENABLE_TIMING_ATTACKS) {
-	// }
+	/* Timing Attacks */
+	if (ENABLE_TIMING_ATTACKS) {
+		std::cout << " Performing a sleep() in a loop ..." << ((timing_sleep_loop(1000) == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Performing a sleep() exploiting ping command line to un existing address " << ((timing_IcmpSendEcho(3) == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		
+		
+	}
 
 	// /* Malware analysis tools */
 	// if (ENABLE_ANALYSIS_TOOLS_CHECK) {

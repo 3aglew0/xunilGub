@@ -23,5 +23,6 @@
 #include "shared/Utils.h"
 
 #include "antiVM/generic.h"
+#include "TimingAttacks/timing.h"
 
 #endif //PCH_H

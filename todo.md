@@ -4,11 +4,13 @@
 1. check version of library libboost-filesystem-dev (it seems working)
 2. implement `disk_size_getdiskfreespace`
 3. implement `accelerated_sleep` [**DONE**]
-4. implement `time in for loop`
 
 04/06/2021
 1. add mouse movement check with tool [**DONE**]
-
+2. timing attaks [**DONE**]
+    * for loop [**DONE**]
+    * ping with timer [**DONE**]
+3. antidisassm
 
 
 # TODO AT THE END
