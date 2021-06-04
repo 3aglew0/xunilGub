@@ -2,7 +2,7 @@ appname := xunilGub
 
 CXX := g++
 CXXFLAGS := -std=c++11
-LDLIBS := -lboost_system -lboost_filesystem
+LDLIBS := -lboost_system -lboost_filesystem -lstdc++fs
 
 srcfiles := $(shell find . -name "*.cpp")
 objects  := $(patsubst %.cpp, %.o, $(srcfiles))	

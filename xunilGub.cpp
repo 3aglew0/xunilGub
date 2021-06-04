@@ -58,7 +58,6 @@ int main(void)
 
 	// /* Generic sandbox detection */
 	if (ENABLE_GEN_SANDBOX_CHECKS) {
-		std::string res;
 		std::cout << "Sandbox Detection" << std::endl;
 		std::cout << " Mouse movement (check in /dev/input/mice)" <<  std::flush << ((mouse_movement() == 0) ? "PASS" : "FAIL") << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL
 		std::cout << " Mouse movement (check using xdottools)" <<  std::flush << ((mouse_movement_tool() == 0) ? "PASS" : "FAIL") << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL		
@@ -74,7 +73,8 @@ int main(void)
 
 	/* VirtualBox Detection */
 	if (ENABLE_VBOX_CHECKS) {
-		
+		std::cout << "Virtual Box Detection" << std::endl;
+		std::cout << " Checking mac address " << ((vbox_check_mac() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
 	// /* VMWare Detection */
