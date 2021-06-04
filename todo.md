@@ -7,7 +7,8 @@
 4. implement `time in for loop`
 
 04/06/2021
-1. 
+1. add mouse movement check with tool [**DONE**]
+
 
 
 # TODO AT THE END

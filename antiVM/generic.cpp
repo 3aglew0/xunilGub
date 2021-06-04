@@ -40,7 +40,7 @@ bool mouse_movement_tool(){
     int exitStatus = 0;
 	std::string result = execCommand("xdotool getmouselocation", exitStatus);
 	sleep(5);
-	return result != execCommand("xdotool getmouselocation", exitStatus) ?  true :  false;
+	return result != execCommand("xdotool getmouselocation", exitStatus) ?  false :  true;
 }
 
 // detect mouse movement, no extra tool required (xdot tool)
