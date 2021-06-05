@@ -93,8 +93,6 @@ bool check_mac_addr(char *szMac){
 	FILE *fp, *fp2;
 	char str[256], mac[8], path2[256];
 
-	//std::experimental::filesystem::path path= "/sys/class/net/";
-
 	std::string path = "/sys/class/net/";
     for (const auto & entry : std::experimental::filesystem::directory_iterator(path)){
 		//std::cout << entry.path() << std::endl;
