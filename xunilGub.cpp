@@ -7,9 +7,9 @@ int main(void)
 {
 	/* enable functions */
 	// bool	ENABLE_TLS_CHECKS = true;
-	bool ENABLE_DEBUG_CHECKS = true;
+	bool ENABLE_DEBUG_CHECKS = false;
 	// bool	ENABLE_INJECTION_CHECKS = true;
-	bool ENABLE_GEN_SANDBOX_CHECKS = true;
+	bool ENABLE_GEN_SANDBOX_CHECKS = false;
 	bool ENABLE_VBOX_CHECKS = true;
 	// bool	ENABLE_VMWARE_CHECKS = true;
 	// bool	ENABLE_VPC_CHECKS = true;
@@ -18,7 +18,7 @@ int main(void)
 	// bool	ENABLE_WINE_CHECKS = true;
 	// bool	ENABLE_PARALLELS_CHECKS = true;
 	// bool	ENABLE_CODE_INJECTIONS = false;
-	bool ENABLE_TIMING_ATTACKS = true;
+	bool ENABLE_TIMING_ATTACKS = false;
 	// bool	ENABLE_DUMPING_CHECK = true;
 	// bool	ENABLE_ANALYSIS_TOOLS_CHECK = true;
 	bool ENABLE_ANTI_DISASSM_CHECKS = true;
@@ -123,12 +123,6 @@ int main(void)
 		AntiDisassmConstantCondition();
 		std::cout<< "Begin AntiDisassmAsmJmpSameTarget"<<std::endl;
 		AntiDisassmAsmJmpSameTarget();
-		std::cout<< "Begin AntiDisassmImpossibleDiasassm"<<std::endl;
-		AntiDisassmImpossibleDiasassm();
-		std::cout<< "Begin AntiDisassmFunctionPointer"<<std::endl;
-		AntiDisassmFunctionPointer();
-		std::cout<< "Begin AntiDisassmReturnPointerAbuse"<<std::endl;
-		AntiDisassmReturnPointerAbuse();
 		
 	}
 
