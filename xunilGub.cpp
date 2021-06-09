@@ -78,6 +78,7 @@ int main(void)
 		std::cout << " Checking pseudo devices " << ((vbox_check_devices() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 		std::cout << " Checking vbox files " << ((vbox_check_files() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 		std::cout << " Checking vbox processes " << ((vbox_check_processes() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Checking vbox firmware " << ((vbox_check_firmware() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
 	// /* VMWare Detection */

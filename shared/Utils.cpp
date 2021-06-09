@@ -78,14 +78,17 @@ unsigned long get_mem_total() {
         if(token == "MemTotal:") {
             unsigned long mem;
             if(file >> mem) {
+				file.close();
                 return mem;
             } else {
+				file.close();
                 return 0;       
             }
         }
         // ignore rest of the line
         file.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+	file.close();
     return 0; // nothing found
 }
 
@@ -101,6 +104,7 @@ bool check_mac_addr(char *szMac){
 		//std::cout << path_to_mac << std::endl;
 		if( (fp = fopen(path_to_mac.c_str(), "r")) ) {
 			fgets(str, sizeof(str), fp);
+			fclose(fp);
 			//std::cout << "mac " << str << std::endl;
 			if (strncmp(str, szMac, 3) == 0){
 				return true;
@@ -109,4 +113,16 @@ bool check_mac_addr(char *szMac){
     }
 
 	return false;
+}
+
+std::string get_system_firmware(){
+	std::string token;
+    std::ifstream file("/proc/version");
+
+    if (file.is_open()){
+		getline(file, token);
+	}
+	file.close();
+	
+    return token; 	
 }

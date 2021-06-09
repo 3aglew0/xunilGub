@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "VirtualBox.h"
 #include <experimental/filesystem>
+#include <regex>
 
 
 /*
@@ -75,4 +76,15 @@ bool vbox_check_processes(){
 		}
 	}
 	return false;
+}
+
+bool vbox_check_firmware(){
+	std::regex vbox("VirtualBox|vbox|VBOX");
+	std::smatch result;
+	std::string firmware = get_system_firmware();
+	std::regex_search(firmware,result,vbox);
+	if (!result[0].str().empty())
+		return true; // vbox string found
+	else 
+		return false; // vbox string not found
 }
