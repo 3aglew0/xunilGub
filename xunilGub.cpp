@@ -12,10 +12,8 @@ int main(void)
 	bool ENABLE_GEN_SANDBOX_CHECKS = true;
 	bool ENABLE_VBOX_CHECKS = true;
 	bool ENABLE_VMWARE_CHECKS = true;
-	// bool	ENABLE_VPC_CHECKS = true;
-	bool	ENABLE_QEMU_CHECKS = true;
-	// bool	ENABLE_XEN_CHECKS = true;
-	// bool	ENABLE_WINE_CHECKS = true;
+	bool ENABLE_QEMU_CHECKS = true;
+	bool ENABLE_XEN_CHECKS = true;
 	// bool	ENABLE_PARALLELS_CHECKS = true;
 	// bool	ENABLE_CODE_INJECTIONS = false;
 	bool ENABLE_TIMING_ATTACKS = true;
@@ -92,23 +90,17 @@ int main(void)
 		
 	}
 
-	// /* Virtual PC Detection */
-	// if (ENABLE_VPC_CHECKS) {
-	// }
-
 	/* QEMU Detection */
 	if (ENABLE_QEMU_CHECKS) {
 		std::cout << "Qemu Detection" << std::endl;
 		std::cout << " Checking qemu firmware " << ((qemu_check_firmware() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
-	// /* Xen Detection */
-	// if (ENABLE_XEN_CHECKS) {
-	// }
-
-	// /* Wine Detection */
-	// if (ENABLE_WINE_CHECKS) {
-	// }
+	/* Xen Detection */
+	if (ENABLE_XEN_CHECKS) {
+		std::cout << "xen Detection" << std::endl;
+		std::cout << " Checking xen mac address " << ((xen_check_mac() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+	}
 
 	// /* Paralles Detection */
 	// if (ENABLE_PARALLELS_CHECKS) {
