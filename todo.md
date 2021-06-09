@@ -13,6 +13,11 @@
 3. antidisassm
     * put asm code inline (check with peda)
 
+05/06/2021
+1. antidisassm
+    * put asm code inline (check with peda) [**DONE**]
+    * check if it makes sense to do another ASM trick
+
 
 # TODO AT THE END
 1. accellerated time: from 2s to 60s
