@@ -19,11 +19,14 @@
 #include <time.h>
 #include <algorithm>
 #include <cctype>
+#include <experimental/filesystem>
+#include <regex>
 
 #include "shared/Utils.h"
 
 #include "antiVM/generic.h"
 #include "antiVM/VirtualBox.h"
+#include "antiVM/Qemu.h"
 #include "TimingAttacks/timing.h"
 #include "AntiDisassm/AntiDisassm.h"
 

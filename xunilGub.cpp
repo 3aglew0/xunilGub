@@ -13,7 +13,7 @@ int main(void)
 	bool ENABLE_VBOX_CHECKS = true;
 	// bool	ENABLE_VMWARE_CHECKS = true;
 	// bool	ENABLE_VPC_CHECKS = true;
-	// bool	ENABLE_QEMU_CHECKS = true;
+	bool	ENABLE_QEMU_CHECKS = true;
 	// bool	ENABLE_XEN_CHECKS = true;
 	// bool	ENABLE_WINE_CHECKS = true;
 	// bool	ENABLE_PARALLELS_CHECKS = true;
@@ -89,9 +89,11 @@ int main(void)
 	// if (ENABLE_VPC_CHECKS) {
 	// }
 
-	// /* QEMU Detection */
-	// if (ENABLE_QEMU_CHECKS) {
-	// }
+	/* QEMU Detection */
+	if (ENABLE_QEMU_CHECKS) {
+		std::cout << "Qemu Detection" << std::endl;
+		std::cout << " Checking qemu firmware " << ((qemu_check_firmware() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+	}
 
 	// /* Xen Detection */
 	// if (ENABLE_XEN_CHECKS) {
@@ -111,6 +113,7 @@ int main(void)
 
 	/* Timing Attacks */
 	if (ENABLE_TIMING_ATTACKS) {
+		std::cout << "Timing attacks" << std::endl;
 		std::cout << " Performing a sleep() in a loop ..." << ((timing_sleep_loop(1000) == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 		std::cout << " Performing a sleep() exploiting ping command line to un existing address " << ((timing_IcmpSendEcho(3) == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 		
@@ -123,9 +126,10 @@ int main(void)
 
 	/* Anti disassembler tricks */
 	if (ENABLE_ANTI_DISASSM_CHECKS) {
-		std::cout<< "Begin AntiDisassmConstantCondition"<<std::endl;
+		std::cout << "Anti disassembler checks" << std::endl;
+		std::cout<< " Begin AntiDisassmConstantCondition"<<std::endl;
 		AntiDisassmConstantCondition();
-		std::cout<< "Begin AntiDisassmAsmJmpSameTarget"<<std::endl;
+		std::cout<< " Begin AntiDisassmAsmJmpSameTarget"<<std::endl;
 		AntiDisassmAsmJmpSameTarget();
 		
 	}
