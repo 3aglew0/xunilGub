@@ -27,6 +27,7 @@
 #include "antiVM/generic.h"
 #include "antiVM/VirtualBox.h"
 #include "antiVM/Qemu.h"
+#include "antiVM/VMWare.h"
 #include "TimingAttacks/timing.h"
 #include "AntiDisassm/AntiDisassm.h"
 

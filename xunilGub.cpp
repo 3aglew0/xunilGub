@@ -11,7 +11,7 @@ int main(void)
 	// bool	ENABLE_INJECTION_CHECKS = true;
 	bool ENABLE_GEN_SANDBOX_CHECKS = true;
 	bool ENABLE_VBOX_CHECKS = true;
-	// bool	ENABLE_VMWARE_CHECKS = true;
+	bool ENABLE_VMWARE_CHECKS = true;
 	// bool	ENABLE_VPC_CHECKS = true;
 	bool	ENABLE_QEMU_CHECKS = true;
 	// bool	ENABLE_XEN_CHECKS = true;
@@ -81,9 +81,16 @@ int main(void)
 		std::cout << " Checking vbox firmware " << ((vbox_check_firmware() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
 	}
 
-	// /* VMWare Detection */
-	// if (ENABLE_VMWARE_CHECKS) {
-	// }
+	/* VMWare Detection */
+	if (ENABLE_VMWARE_CHECKS) {
+		std::cout << "VMWare Detection" << std::endl;
+		std::cout << " Checking mac address " << ((vmware_check_mac() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Checking vmware firmware " << ((vmware_check_firmware() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Checking vmware pseudo devices " << ((vmware_check_devices() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Checking vmware files " << ((vmware_check_files() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		std::cout << " Checking vmware processes " << ((vmware_check_processes() == 0) ? "PASS" : "FAIL") << std::endl; // true -> fail, false -> pass
+		
+	}
 
 	// /* Virtual PC Detection */
 	// if (ENABLE_VPC_CHECKS) {

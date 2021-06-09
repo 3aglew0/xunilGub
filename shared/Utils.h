@@ -4,7 +4,7 @@ ulong get_idt_base();
 ulong get_ldt_base();
 ulong get_gdt_base();
 unsigned long get_mem_total();
-bool check_mac_addr(char *szMac);
+bool check_mac_addr(const char *szMac);
 std::string get_system_firmware();
 
 // Check GCC

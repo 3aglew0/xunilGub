@@ -92,7 +92,7 @@ unsigned long get_mem_total() {
     return 0; // nothing found
 }
 
-bool check_mac_addr(char *szMac){
+bool check_mac_addr(const char *szMac){
 	FILE *fp, *fp2;
 	char str[256], mac[8], path2[256];
 
