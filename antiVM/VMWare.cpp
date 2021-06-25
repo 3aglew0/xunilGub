@@ -25,10 +25,10 @@ bool vmware_check_files(){
 
 bool vmware_check_mac(){
     std::vector<std::string> poss_mac_addr;
-    poss_mac_addr.push_back("\x00\x05\x69");
-    poss_mac_addr.push_back("\x00\x0C\x29");
-    poss_mac_addr.push_back("\x00\x1C\x14");
-    poss_mac_addr.push_back("\x00\x50\x56");
+    poss_mac_addr.push_back("00:05:69");
+    poss_mac_addr.push_back("00:0c:29");
+    poss_mac_addr.push_back("00:1c:14");
+    poss_mac_addr.push_back("00:50:56");
 
 	for (std::string mac : poss_mac_addr){
 		if (check_mac_addr(mac.c_str())){

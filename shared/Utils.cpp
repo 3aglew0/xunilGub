@@ -106,7 +106,8 @@ bool check_mac_addr(const char *szMac){
 			fgets(str, sizeof(str), fp);
 			fclose(fp);
 			//std::cout << "mac " << str << std::endl;
-			if (strncmp(str, szMac, 3) == 0){
+			//std::cout << "szMac " << szMac << std::endl; 
+			if (strncmp(str, szMac, 8) == 0){
 				return true;
 			}
         }

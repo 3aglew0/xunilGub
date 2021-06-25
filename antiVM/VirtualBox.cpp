@@ -6,7 +6,7 @@ Check virtualbox NIC MAC address
 */
 bool vbox_check_mac()
 {
-	return check_mac_addr("\x08\x00\x27");
+	return check_mac_addr("08:00:27");
 }
 
 /*
