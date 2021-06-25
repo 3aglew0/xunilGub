@@ -3,12 +3,6 @@
 
 #include "pch.h"
 
-#define NC "\e[0m"
-#define RED "\e[0;31m"
-#define GRN "\e[0;32m"
-#define CYN "\e[0;36m"
-#define REDB "\e[41m"
-
 int main(void)
 {
 	/* enable functions */
@@ -24,13 +18,15 @@ int main(void)
 
 	/* Debugger Detection */
 	if (ENABLE_DEBUG_CHECKS) {
-		std::cout << CYN "Debugger Detection" NC << std::endl;
+		std::cout << CYN "\nDebugger Detection" NC << std::endl;
+		std::cout << GRNB "\nRunning debugmenot ... \n" NC << std::endl;
 		std::system("./debugmenot/src/debugmenot");
+		std::cout << GRNB "\nEnd running debugmenot ... \n" NC << std::endl;
 	}
 
 	// /* Generic sandbox detection */
 	if (ENABLE_GEN_SANDBOX_CHECKS) {
-		std::cout << CYN "Sandbox Detection" NC << std::endl;
+		std::cout << CYN "\nSandbox Detection" NC << std::endl;
 		std::cout << std::setw(60) << " Mouse movement (check in /dev/input/mice): " <<  std::flush << ((mouse_movement() == 0) ? GRN "PASS" NC : RED "FAIL" NC ) << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL
 		std::cout << std::setw(60) << " Mouse movement (check using xdottools): " <<  std::flush << ((mouse_movement_tool() == 0) ? GRN "PASS" NC : RED "FAIL" NC ) << std::endl; // check again if logic is correct: move -> PASS, not move -> FAIL		
 		std::cout << std::setw(60) << " Checking Number of processors in machine: " << ((number_of_processors()== 0) ? GRN "PASS" NC : RED "FAIL" NC ) << std::endl;
@@ -79,7 +75,7 @@ int main(void)
 	if (ENABLE_TIMING_ATTACKS) {
 		std::cout << CYN "\n\nTiming attacks" NC << std::endl;
 		std::cout << std::setw(60) << " Performing a sleep() in a loop: " << ((timing_sleep_loop(1000) == 0) ? GRN "PASS" NC : RED "FAIL" NC ) << std::endl; // true -> fail, false -> pass
-		std::cout << std::setw(60) << " Performing a sleep() exploiting ping command line to un existing address: " << ((timing_IcmpSendEcho(3) == 0) ? GRN "PASS" NC : RED "FAIL" NC  ) << std::endl; // true -> fail, false -> pass
+		std::cout << std::setw(60) << " Performing a sleep() exploiting ping command line " << ((timing_IcmpSendEcho(3) == 0) ? GRN "PASS" NC : RED "FAIL" NC  ) << std::endl; // true -> fail, false -> pass
 		
 		
 	}
