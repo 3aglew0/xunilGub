@@ -1,6 +1,6 @@
 # Content
 - [Introduction](#introduction)
-- [Download, Installation and Run](#download,installationandrun)
+- [Download, Installation and Run](#download-installation-and-run)
 - [Usage](#usage)
 - [Features](#features)
 - [Authors](#authors)
