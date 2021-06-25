@@ -12,14 +12,18 @@ bool vmware_check_files(){
 	VM_files.push_back("/usr/bin/vmtoolsd");
 	VM_files.push_back("/sys/kernel/debug/vmmemctl");
 
-	
 	for (const auto & file : VM_files){
-		if (std::experimental::filesystem::exists(file)){
-			//std::cout << "Path " << file << std::endl;
+		try {
+			if (std::experimental::filesystem::exists(file)){
+				//std::cout << "Path " << file << std::endl;
+				return true;
+			}
+		}
+		catch(...){
+			std::cout << RED "ERROR no permission to check files - " NC ;
 			return true;
 		}
 	}
-
 	return false;
 }
 

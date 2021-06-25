@@ -64,7 +64,7 @@ bool mouse_movement(){
         fd = open(pDevice, O_RDWR);
         if(fd == -1)
         {
-            printf("ERROR Opening %s\n", pDevice);
+            std::cout << RED "ERROR Opening " << pDevice << " - " NC ;
             exit(-1);
         }
         
@@ -99,7 +99,7 @@ bool mouse_movement(){
             // status == 0 -> mouse detected
             // status != 0 -> some error (e.g. no permission)
             // Probably we are not in VM, return FALSE
-            return false;
+            return (status != 0);
         }
 
     }
