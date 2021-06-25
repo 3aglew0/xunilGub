@@ -8,7 +8,7 @@
 # Introduction
 xunilGub is a PoC "malware" application with good intentions that aims to stress your anti-malware system. It performs a bunch of common malware tricks with the goal of seeing if you stay under the radar.
 
-[metti foto]
+![output](picture/output.png?raw=true)
 
 # Download, Installation and Run
 1. Update the system
@@ -90,5 +90,5 @@ Please, if you encounter any of the anti-analysis tricks which you have seen in 
     - No check, perform some anti dissasbler trick to mess with Disassbler
 
 # Authors
-- @3aglow0 (Noemi)
-- @ciastron (Marco)
+- @3aglew0 (Noemi Daniele)
+- @ciastron (Marco Brotto)
