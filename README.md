@@ -6,7 +6,7 @@
 - [Authors](#authors)
 
 # Introduction
-xunilGub is a PoC "malware" application with good intentions that aims to stress your anti-malware system. It performs a bunch of common malware tricks with the goal of seeing if you stay under the radar.
+xunilGub is a PoC "malware" application with good intentions that aims to stress your anti-malware system. It performs a bunch of common malware tricks with the goal of seeing if you stay under the radar. xunilGub works on Linux systems.
 
 ![output](picture/output.png?raw=true)
 
@@ -28,7 +28,7 @@ xunilGub is a PoC "malware" application with good intentions that aims to stress
 4. To compile the project: `make`
 5. To run the executable `make run`
     
-    XunilGub performs some check only if it is run with super user privileges, i.e. you need to run `sudo make run`
+    XunilGub performs some check only if it is run with super user priviledges, i.e. you need to run `sudo make run`
 
 # Usage
 
