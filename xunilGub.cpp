@@ -74,7 +74,7 @@ int main(void)
 	/* Timing Attacks */
 	if (ENABLE_TIMING_ATTACKS) {
 		std::cout << CYN "\n\nTiming attacks" NC << std::endl;
-		std::cout << std::setw(60) << " Performing a sleep() in a loop: " << ((timing_sleep_loop(1000) == 0) ? GRN "PASS" NC : RED "FAIL" NC ) << std::endl; // true -> fail, false -> pass
+		std::cout << std::setw(60) << " Performing a sleep() in a loop: " << ((timing_sleep_loop(5000) == 0) ? GRN "PASS" NC : RED "FAIL" NC ) << std::endl; // true -> fail, false -> pass
 		std::cout << std::setw(60) << " Performing a sleep() exploiting ping command line " << ((timing_IcmpSendEcho(3) == 0) ? GRN "PASS" NC : RED "FAIL" NC  ) << std::endl; // true -> fail, false -> pass
 		
 		

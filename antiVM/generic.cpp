@@ -81,7 +81,7 @@ bool mouse_movement(){
     }
     else{
         //parent
-        sleep(1);
+        sleep(5);
         int status;
         pid_t result = waitpid(p, &status, WNOHANG);
         if ( result == -1 ) {
