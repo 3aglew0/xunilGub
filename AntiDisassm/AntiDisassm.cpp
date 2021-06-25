@@ -7,7 +7,6 @@
 */
 void AntiDisassmConstantCondition()
 {	
-	std::cout<<"ciao"<<std::endl;
     __asm__ (  "xor %edx, %edx;" 
 	            "jz L_END;"			// this condition is always true
 	            "movl $20, %edx;"	// junk code which creates mess to disassembler
