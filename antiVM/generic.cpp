@@ -125,7 +125,7 @@ bool number_of_processors() {
     }
 
     //printf("Proc Count:%d\n", procCount);
-    if (procCount < 2)
+    if (procCount <= 2)
 		return true;
 	else
 		return false;
